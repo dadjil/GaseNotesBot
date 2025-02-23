@@ -13,7 +13,7 @@ categories = []
 def show_menu(message):
     trans = translate.Translator(db.determine_lang(message.from_user.username), "english")
     main_menu = telebot.types.ReplyKeyboardMarkup()
-    emodjis = ["📒","🔍","️️⚙️"]
+    emodjis = ["📒", "🔍", "️️⚙️"]
     buttons_text = ["Add a note", "Find a note", "Settings"]
     for i in range(len(buttons_text)):
         main_menu.add(telebot.types.KeyboardButton(trans.translate(buttons_text[i])+emodjis[i]))
@@ -36,37 +36,42 @@ def lang_set(call):
     if call.data == "lang_english":
         db.insert([call.from_user.username, "english"], ["username", "language"], "Users")
     elif call.data == "lang_russian":
-        db.insert("russian", "language", "Users")
+        db.insert([call.from_user.username, "russian"], ["username", "language"], "Users")
     elif call.data == "lang_spanish":
-        db.insert("spanish", "language", "Users")
+        db.insert([call.from_user.username, "spanish"], ["username", "language"], "Users")
+
     trans = translate.Translator(db.determine_lang(call.from_user.username), "english")
     bot.send_message(call.message.chat.id,
-                     text=trans.translate("Hello again, i am a bot of advanced note adding. Something kind of smart custom database for your needs"))
+                     text=trans.translate("Hello again, I am a bot for advanced note adding. Something like a smart custom database for your needs"))
     bot.send_message(call.message.chat.id,
-                     text=trans.translate("So, before we get started, add some traits of each your note. To do this, just write down the name of a trait"))
+                     text=trans.translate("So, before we get started, add some traits for each of your notes. To do this, just write down the name of a trait"))
     bot.send_message(call.message.chat.id,
-                     text=trans.translate("To stop the process write a /stop command"))
+                     text=trans.translate("To stop the process, write the /stop command"))
     bot.register_next_step_handler(call.message, get_category_propose_hint)
 
 
 def get_category_propose_hint(message):
     global categories_hints, categories
-    txt=message.text
+    if not message.text:
+        bot.send_message(message.chat.id, text="Please provide a valid category name.")
+        return
+
     trans = translate.Translator(db.determine_lang(message.from_user.username), "english")
-    if message.text !="/stop":
+    if message.text != "/stop":
         bot.send_message(message.chat.id,
-                         text=f"{message.text} - "+trans.translate("Category was created!"))
+                         text=f"{message.text} - " + trans.translate("Category was created!"))
         hint_markup = telebot.types.InlineKeyboardMarkup()
         hint_yes = telebot.types.InlineKeyboardButton(text=trans.translate("Yes"), callback_data="hint_yes")
         hint_no = telebot.types.InlineKeyboardButton(text=trans.translate("No"), callback_data="hint_no")
         hint_markup.add(hint_yes, hint_no)
         categories.append(message.text)
-        bot.send_message(message.chat.id, text=trans.translate("Do you want to add some hints to such category?"),
+        bot.send_message(message.chat.id, text=trans.translate("Do you want to add some hints to this category?"),
                          reply_markup=hint_markup)
     else:
         bot.send_message(message.chat.id,
-                         text=trans.translate("Now, when all the required data saved, menu can be showed. If something go wrong just type /menu to see the menu"))
+                         text=trans.translate("Now that all the required data is saved, the menu can be shown. If something goes wrong, just type /menu to see the menu"))
         show_menu(message)
+
 
 def get_hint(message):
     global categories_hints, categories
@@ -74,20 +79,20 @@ def get_hint(message):
     categories_hints[categories[-1]] = message.text
     bot.send_message(message.chat.id, text=trans.translate("Your hints were added! Go on writing categories"))
     bot.register_next_step_handler(message, get_category_propose_hint)
-@bot.callback_query_handler(func=lambda call: call.data == "hint_")
+
+
+@bot.callback_query_handler(func=lambda call: call.data in ["hint_yes", "hint_no"])
 def set_hint(call):
     global categories_hints, categories
     trans = translate.Translator(db.determine_lang(call.from_user.username), "english")
     if call.data == "hint_yes":
         bot.send_message(call.message.chat.id,
-                         text=trans.translate("Write comma separated hints (looks like that: hint1, hint2...)"))
+                         text=trans.translate("Write comma-separated hints (looks like this: hint1, hint2...)"))
         bot.register_next_step_handler(call.message, get_hint)
-
     elif call.data == "hint_no":
         bot.send_message(call.message.chat.id, text=trans.translate("Ok, go on writing categories"))
         categories_hints[categories[-1]] = []
         bot.register_next_step_handler(call.message, get_category_propose_hint)
-
 
 
 bot.infinity_polling()

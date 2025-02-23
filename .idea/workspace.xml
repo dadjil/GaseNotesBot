@@ -7,7 +7,6 @@
     <list default="true" id="6d3e67f3-edc9-4dc5-819e-7a536e909bb7" name="Changes" comment="Second commit with reworked main.py  structure">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/database_handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +69,7 @@
       <workItem from="1740310288767" duration="1418000" />
       <workItem from="1740312748476" duration="13170000" />
       <workItem from="1740332653124" duration="445000" />
-      <workItem from="1740339074242" duration="3965000" />
+      <workItem from="1740339074242" duration="4589000" />
     </task>
     <task id="LOCAL-00001" summary="First undone commit with localization, database handler, and bot body">
       <option name="closed" value="true" />
@@ -88,7 +87,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740323346123</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Second commit with reworked main.py  structure">
+      <option name="closed" value="true" />
+      <created>1740343144309</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1740343144309</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -107,12 +114,13 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First undone commit with localization, database handler, and bot body" />
+    <MESSAGE value="Third version without outer localization and a sql error" />
     <MESSAGE value="Second commit with reworked main.py  structure" />
     <option name="LAST_COMMIT_MESSAGE" value="Second commit with reworked main.py  structure" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/toFathersNew$database_handler.coverage" NAME="database_handler Coverage Results" MODIFIED="1740319109802" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/toFathersNew$main.coverage" NAME="main Coverage Results" MODIFIED="1740342705449" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/toFathersNew$main.coverage" NAME="main Coverage Results" MODIFIED="1740343838264" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/toFathersNew$localizated_text.coverage" NAME="localizated_text Coverage Results" MODIFIED="1740146000216" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

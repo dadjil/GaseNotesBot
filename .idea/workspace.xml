@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d3e67f3-edc9-4dc5-819e-7a536e909bb7" name="Changes" comment="Second commit with reworked main.py  structure">
+    <list default="true" id="6d3e67f3-edc9-4dc5-819e-7a536e909bb7" name="Changes" comment="little modified and pure undone version">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/database_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +70,8 @@
       <workItem from="1740310288767" duration="1418000" />
       <workItem from="1740312748476" duration="13170000" />
       <workItem from="1740332653124" duration="445000" />
-      <workItem from="1740339074242" duration="4589000" />
+      <workItem from="1740339074242" duration="6112000" />
+      <workItem from="1740400266866" duration="3085000" />
     </task>
     <task id="LOCAL-00001" summary="First undone commit with localization, database handler, and bot body">
       <option name="closed" value="true" />
@@ -95,7 +97,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740343144309</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="little modified and pure undone version">
+      <option name="closed" value="true" />
+      <created>1740344013703</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1740344013703</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -116,7 +126,8 @@
     <MESSAGE value="First undone commit with localization, database handler, and bot body" />
     <MESSAGE value="Third version without outer localization and a sql error" />
     <MESSAGE value="Second commit with reworked main.py  structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="Second commit with reworked main.py  structure" />
+    <MESSAGE value="little modified and pure undone version" />
+    <option name="LAST_COMMIT_MESSAGE" value="little modified and pure undone version" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/toFathersNew$database_handler.coverage" NAME="database_handler Coverage Results" MODIFIED="1740319109802" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

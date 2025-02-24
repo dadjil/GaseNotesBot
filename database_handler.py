@@ -2,72 +2,51 @@ import sqlite3
 
 class DatabaseHandler:
     def __init__(self):
-        self.db_name = "GaseNotes.db"
-        self.database = sqlite3.connect(self.db_name)
-        self.cursor = self.database.cursor()
-        self.database_users_initialize()
+        self.connection = sqlite3.connect('GaseNotes.db')
+        self.cursor = self.connection.cursor()
+        self.__table_users_creation()
+        self.__table_categories_creation()
+        self.__table_hints_creation()
 
-
-    def database_users_initialize(self):
+    def __table_users_creation(self):
         self.cursor.execute('''
-            CREATE TABLE IF NOT EXISTS Users(
-            username TEXT NOT NULL PRIMARY KEY,
-            language TEXT NOT NULL
-            )
-            ''')
-        self.database.commit()
-
-    def insert(self, val: list, col: list, table: str):
-        if not val or not col:
-            raise ValueError("Values and columns cannot be empty")
-        placeholders = ", ".join(["?"] * len(val))
-        query = f'INSERT INTO {table} ({", ".join(col)}) VALUES ({placeholders})'
-        self.cursor.execute(query, val)
-        self.database.commit()
-
-    def find_user(self, name):
-        self.cursor.execute(f'SELECT * FROM Users WHERE username = "{name}"')
-        return self.cursor.fetchall()
-
-    def determine_lang(self, name):
-        user_data = self.find_user(name)
-        if user_data:
-            return user_data[0][1]  # Возвращаем язык из первого найденного пользователя
-        else:
-            return "english"
-
-    def hint_category_to_user_add(self, username: str, category_and_hints: dict, is_date_on):
-        if not category_and_hints:
-            raise ValueError("Category and hints cannot be empty")
-
-        # Проверяем, что имена категорий безопасны для SQL
-        for category in category_and_hints.keys():
-            if not category.replace("_", "").isalnum():
-                raise ValueError(f"Invalid category name: {category}")
-
-        self.cursor.execute(f"SELECT * FROM Users WHERE username = ?", (username,))
-        user = self.cursor.fetchone()
-        if user is None:
-            raise ValueError("User not found")
-
-        # Создаем таблицу с динамическими колонками
-        columns = [f"{category} TEXT NOT NULL" for category in category_and_hints.keys()]
-        columns.append("hint TEXT NOT NULL")
-        if is_date_on:
-            columns.append("date TEXT NOT NULL")
-
-        create_table_query = f'''
-        CREATE TABLE IF NOT EXISTS {username}_notes (
-            {", ".join(columns)}
+        CREATE TABLE IF NOT EXISTS Users (
+        username TEXT NOT NULL PRIMARY KEY,
+        language TEXT NOT NULL
         )
-        '''
-        self.cursor.execute(create_table_query)
-        self.database.commit()
+        ''')
+        self.connection.commit()
 
-        # Вставляем подсказки
-        for category, hints in category_and_hints.items():
-            if isinstance(hints, list):
-                hints_str = ", ".join(hints)
-                self.insert(val=[f"{category}:{hints_str}"], col=["hint"], table=f"{username}_notes")
-            else:
-                raise ValueError("Hints must be a list")
+    def __table_categories_creation(self):
+        self.cursor.execute('''
+        CREATE TABLE IF NOT EXISTS Categories (
+        category_owner TEXT NOT NULL,
+        categories TEXT NOT NULL,
+        FOREIGN KEY (category_owner) REFERENCES Users (username)
+        )
+        ''')
+        self.connection.commit()
+
+    def __table_hints_creation(self):
+        self.cursor.execute('''
+        CREATE TABLE IF NOT EXISTS Hints (
+        FOREIGN KEY (category) REFERENCES Categories (categories),
+        hints TEXT NOT NULL
+        )
+        ''')
+        self.connection.commit()
+   def add_user(self, username, language):
+       self.cursor.execute("INSERT INTO Users (username, language) VALUES (?, ?)", (username, language))
+       self.connection.commit()
+   def update_users_language(self, username, language):
+       self.cursor.execute("UPDATE Users SET language = ? WHERE username = ?", (language, username))
+       self.connection.commit()
+
+    def determine_lang(self, username):
+        self.cursor.execute("SELECT language FROM Users WHERE username = ?", (username,))
+        return self.cursor.fetchone()[0]
+
+
+
+    def __del__(self):
+        self.connection.close()

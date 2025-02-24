@@ -6,8 +6,7 @@ import translate
 token = "7542245520:AAFPNt13ZYt8Kf4ZcOixjDTbd42B0ZczC0s"
 bot = telebot.TeleBot(token=token)
 db = DatabaseHandler()
-categories_hints = {}
-categories = []
+
 
 
 def show_menu(message):
@@ -34,11 +33,11 @@ def start(message):
 @bot.callback_query_handler(func=lambda call: call.data.startswith("lang_"))
 def lang_set(call):
     if call.data == "lang_english":
-        db.insert([call.from_user.username, "english"], ["username", "language"], "Users")
+        db.add_user(call.from_user.username, "english")
     elif call.data == "lang_russian":
-        db.insert([call.from_user.username, "russian"], ["username", "language"], "Users")
+        db.add_user(call.from_user.username, "russian")
     elif call.data == "lang_spanish":
-        db.insert([call.from_user.username, "spanish"], ["username", "language"], "Users")
+        db.add_user(call.from_user.username, "spanish")
 
     trans = translate.Translator(db.determine_lang(call.from_user.username), "english")
     bot.send_message(call.message.chat.id,

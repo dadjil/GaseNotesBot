@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d3e67f3-edc9-4dc5-819e-7a536e909bb7" name="Changes" comment="undone rebuild database version 1">
+    <list default="true" id="6d3e67f3-edc9-4dc5-819e-7a536e909bb7" name="Changes" comment="corrected version of previous commit&#10;need to add a note adding, settings and csv get">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/database_handler.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
@@ -71,7 +71,8 @@
       <workItem from="1740312748476" duration="13170000" />
       <workItem from="1740332653124" duration="445000" />
       <workItem from="1740339074242" duration="6112000" />
-      <workItem from="1740400266866" duration="9664000" />
+      <workItem from="1740400266866" duration="10645000" />
+      <workItem from="1740514876233" duration="2087000" />
     </task>
     <task id="LOCAL-00001" summary="First undone commit with localization, database handler, and bot body">
       <option name="closed" value="true" />
@@ -113,7 +114,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740403546477</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="corrected version of previous commit&#10;need to add a note adding, settings and csv get">
+      <option name="closed" value="true" />
+      <created>1740411062554</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1740411062554</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,11 +145,12 @@
     <MESSAGE value="Second commit with reworked main.py  structure" />
     <MESSAGE value="little modified and pure undone version" />
     <MESSAGE value="undone rebuild database version 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="undone rebuild database version 1" />
+    <MESSAGE value="corrected version of previous commit&#10;need to add a note adding, settings and csv get" />
+    <option name="LAST_COMMIT_MESSAGE" value="corrected version of previous commit&#10;need to add a note adding, settings and csv get" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/toFathersNew$main.coverage" NAME="main Coverage Results" MODIFIED="1740407015248" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/toFathersNew$database_handler.coverage" NAME="database_handler Coverage Results" MODIFIED="1740407196658" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/toFathersNew$database_handler.coverage" NAME="database_handler Coverage Results" MODIFIED="1740516657816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/toFathersNew$main.coverage" NAME="main Coverage Results" MODIFIED="1740516663664" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/toFathersNew$localizated_text.coverage" NAME="localizated_text Coverage Results" MODIFIED="1740146000216" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

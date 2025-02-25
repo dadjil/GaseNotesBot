@@ -55,6 +55,7 @@ class DatabaseHandler:
         connection.close()
 
     def update_users_language(self, username, language):
+        username, language = username.lower(), language.lower()
         connection = sqlite3.connect(self.db_name)
         cursor = connection.cursor()
         cursor.execute("UPDATE Users SET language = ? WHERE username = ?", (language, username))
@@ -62,14 +63,16 @@ class DatabaseHandler:
         connection.close()
 
     def determine_lang(self, username):
+        username = username.lower()
         connection = sqlite3.connect(self.db_name)
         cursor = connection.cursor()
-        cursor.execute("SELECT language FROM Users WHERE username = ?", (username,))
-        res = cursor.fetchone()[0]
+        cursor.execute(f"SELECT language FROM Users WHERE username = {username}")
+        res = cursor.fetchone()
         connection.close()
         return res
 
     def get_id_from_user(self, user_name):
+        user_name = user_name.lower()
         connection = sqlite3.connect(self.db_name)
         cursor = connection.cursor()
         cursor.execute("SELECT user_id FROM Users WHERE category_owner_id = ?", (user_name,))
@@ -81,6 +84,7 @@ class DatabaseHandler:
             return res[0]
 
     def add_category(self, user_name, category):
+        user_name, category = user_name.lower(), category.lower()
         connection = sqlite3.connect(self.db_name)
         cursor = connection.cursor()
         cursor.execute("INSERT INTO Categories (category_owner_id, categories) VALUES (?, ?)",
@@ -89,6 +93,8 @@ class DatabaseHandler:
         connection.close()
 
     def add_hints_and_category(self, username, category, hints):
+        username, category = username.lower(), category.lower()
+        hints[::].lower()
         self.add_category(username, category)
         connection = sqlite3.connect(self.db_name)
         cursor = connection.cursor()

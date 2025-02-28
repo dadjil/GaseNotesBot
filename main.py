@@ -45,13 +45,13 @@ def lang_set(call):
         db.add_user(name, "es")
 
     bot.send_message(call.message.chat.id,
-                     text=for_user_translate(call.message.from_user.username,
+                     text=for_user_translate(name,
                                              "Hello again, I am a bot for advanced note adding. Something like a smart custom database for your needs"))
     bot.send_message(call.message.chat.id,
-                     text=for_user_translate(call.message.from_user.username,
+                     text=for_user_translate(name,
                                              "So, before we get started, add some traits for each of your notes. To do this, just write down the name of a trait"))
     bot.send_message(call.message.chat.id,
-                     text=for_user_translate(call.message.from_user.username,
+                     text=for_user_translate(name,
                                              "To stop the process, write the /stop command"))
     bot.register_next_step_handler(call.message, get_category_propose_hint)
 

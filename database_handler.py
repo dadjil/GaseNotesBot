@@ -66,7 +66,7 @@ class DatabaseHandler:
         username = username.lower()
         connection = sqlite3.connect(self.db_name)
         cursor = connection.cursor()
-        cursor.execute(f"SELECT language FROM Users WHERE username = {username}")
+        cursor.execute(f"SELECT language FROM Users WHERE username = ?", (username, ))
         res = cursor.fetchone()
         connection.close()
         return res

@@ -8,8 +8,11 @@ bot = telebot.TeleBot(token=token)
 db = DatabaseHandler()
 
 
+
 def for_user_translate(name, mes):
-    return Translator(to_lang=db.determine_lang(name)).translate(mes)
+    lang = db.determine_lang(name)
+    return Translator(to_lang=lang).translate(mes)
+
 
 
 def show_menu(message):
@@ -98,11 +101,11 @@ def hint_fork(call):
     global temporal_category_storage
     if call.data == "hint_yes":
         bot.send_message(call.message.chat.id,
-                         text=for_user_translate(call.message.from_user.username,
+                         text=for_user_translate(call.from_user.username,
                                                  "Write down hints, separated by commas (hint, hint ...)"))
         bot.register_next_step_handler(call.message, hint_set)
     elif call.data == "hint_no":
-        db.add_category(call.message.from_user.username, temporal_category_storage)
+        db.add_category(call.from_user.username, temporal_category_storage)
         temporal_category_storage = ""
         bot.send_message(call.message.chat.id,
                          text=for_user_translate(call.message.from_user.username,

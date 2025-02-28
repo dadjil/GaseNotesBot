@@ -66,16 +66,18 @@ class DatabaseHandler:
         username = username.lower()
         connection = sqlite3.connect(self.db_name)
         cursor = connection.cursor()
-        cursor.execute(f"SELECT language FROM Users WHERE username = ?", (username, ))
+        cursor.execute("SELECT language FROM Users WHERE username = ?", (username,))
         res = cursor.fetchone()
         connection.close()
-        return res
+        if res is not None:
+            return res[0]
+        else:
+            return "en"
 
     def get_id_from_user(self, user_name):
-        user_name = user_name.lower()
         connection = sqlite3.connect(self.db_name)
         cursor = connection.cursor()
-        cursor.execute("SELECT user_id FROM Users WHERE category_owner_id = ?", (user_name,))
+        cursor.execute("SELECT user_id FROM Users WHERE username = ?", (user_name,))
         res = cursor.fetchone()
         connection.close()
         if res is None:
